@@ -1,4 +1,6 @@
 class MeetingsController < ApplicationController
+  http_basic_authenticate_with name: ENV["USERNAME"], password: ENV["PASSWORD"]
+
   def edit
     @meeting = Meeting.find(params[:id])
     @member = Member.find(params[:member_id])
