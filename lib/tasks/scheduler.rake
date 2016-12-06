@@ -27,7 +27,7 @@ end
 
 desc 'mail all meetings for the week to meeting members'
 task trigger_weekly_email: :environment do
-  if Time.now.sunday?
+  if Time.now.monday?
     puts 'Sending weekly email...'
     Meeting.trigger_weekly_email
     puts 'Done sending weekly email...'
