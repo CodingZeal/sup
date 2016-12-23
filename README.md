@@ -128,6 +128,21 @@ If things around the office get a bit hectic, any member can disable their parti
 * Click here on this: [![Stories in Ready](https://badge.waffle.io/ilyakava/sup.png?label=ready&title=Ready)](https://waffle.io/ilyakava/sup) badge to check what needs to be done!
 * Click the 'Issues' button above on the right to log a bug or problem.
 
+## Quick Data Generation
+
+You can generate fake data using two of the provided rake tasks that may aide in the development process.
+
+### `rake generate_fake_members[number_of_members, number_of_groups]`
+
+This task can be used to generate fake members that belong to a random fake group.
+- You can provide an optional argument for the number of members that you would like created, otherwise it will create 20 members.
+- You can provide an optional argument for the number of groups that you would like created, otherwise it will create 1 to 3 times the number of members.
+
+### `rake generate_fake_teams_of_one[number_of_members]`
+
+This task can be used to generate fake members that belong to specific group created for them. This is useful to generate members where there are no departments, but rather just individuals that would like to meet with anyone in the company.
+- You can provide an optional argument for the number of members that you would like created, otherwise it will create 20 members.
+
 ## Testing
 
 Run `rake fspec` to exclude the slow specs that check the convergence of the pairing algorithm, and `rake` to run all tests (several minutes).
