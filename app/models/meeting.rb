@@ -18,7 +18,7 @@ class Meeting < ActiveRecord::Base
   end
 
   def self.trigger_weekly_email
-    time_range = (3.days.ago..Time.now)
+    time_range = (6.days.ago..Time.now)
     Meeting.where(created_at: time_range).each do |meeting|
       MeetingMailer.new_meeting(meeting).deliver
     end
