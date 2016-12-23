@@ -18,7 +18,7 @@ end
 
 desc 'mail admin informational email'
 task send_weekly_admin_email: :environment do
-  if Time.now.saturday? && ENV['ADMIN_EMAIL']
+  if Time.now.monday? && ENV['ADMIN_EMAIL']
     puts 'Sending weekly admin email...'
     AdminMailer.weekly.deliver
     puts 'Done sending weekly admin email...'

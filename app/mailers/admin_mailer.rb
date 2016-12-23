@@ -3,8 +3,8 @@ class AdminMailer < ActionMailer::Base
 
   def weekly
     return unless ENV['ADMIN_EMAIL']
-    next_week = (Time.now..(Time.now + 7.days))
-    last_week = (7.days.ago..Time.now)
+    next_week = (Time.now - 2.days..(Time.now + 5.days))
+    last_week = (9.days.ago..Time.now - 2.days)
     @meetings = Meeting.where(meeting_date: next_week)
     @feedbacks = Feedback.where(created_at: last_week)
     @member_count = Member.active.count
