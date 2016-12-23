@@ -61,6 +61,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.2)
+    ffaker (2.3.0)
     fssm (0.2.10)
     hike (1.2.3)
     htmlentities (4.3.2)
@@ -195,6 +196,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails
   database_cleaner
+  ffaker
   figaro!
   jquery-rails
   nokogiri

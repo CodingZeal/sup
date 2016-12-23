@@ -16,6 +16,7 @@ gem 'nokogiri'
 gem 'picky' # has a more performant array intersection method
 gem 'timecop'
 gem 'rspec-rails'
+gem 'ffaker'
 
 gem 'rails_12factor', group: :production
 
