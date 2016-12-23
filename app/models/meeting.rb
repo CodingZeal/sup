@@ -25,7 +25,7 @@ class Meeting < ActiveRecord::Base
   end
 
   def self.trigger_followup_email
-    time_range = (6.days.ago..Time.now)
+    time_range = (8.days.ago..Time.now - 2.days)
     Meeting.where(meeting_date: time_range).each do |meeting|
       MeetingMailer.followup(meeting).deliver
     end

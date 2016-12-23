@@ -9,7 +9,7 @@ end
 
 desc "mail all followup emails for the past week's meetings"
 task trigger_followup_email: :environment do
-  if Time.now.saturday?
+  if Time.now.monday?
     puts 'Sending weekly followup email...'
     Meeting.trigger_followup_email
     puts 'Done sending weekly followup email...'
