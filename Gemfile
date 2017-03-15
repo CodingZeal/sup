@@ -17,9 +17,17 @@ gem 'picky' # has a more performant array intersection method
 gem 'timecop'
 gem 'rspec-rails'
 gem 'ffaker'
+gem 'slack-api'
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
 
+group :development, :test do
+  gem 'dotenv-rails'
+  gem 'awesome_print'
+  gem 'byebug'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -34,5 +42,3 @@ gem 'rubocop'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'protected_attributes'
-
-
