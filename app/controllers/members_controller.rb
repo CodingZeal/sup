@@ -84,13 +84,12 @@ class MembersController < ApplicationController
   end
 
   def imported_slack_members
-    @imported_slack_users ||= params[:new_members].map do |user|
+    params[:new_members].map do |user|
       parsed_user = JSON.parse(user)
-      Member.new(
-        name:     parsed_user['real_name'],
-        email:    parsed_user['profile']['email'],
-        slack_id: parsed_user['id']
-      )
+      member = Member.find_or_initialize_by(email: parsed_user['profile']['email'])
+      member.name = parsed_user['real_name'] if member.new_record?
+      member.slack_id = parsed_user['id'] unless member.slack_id
+      member
     end
   end
 
