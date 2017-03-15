@@ -1,0 +1,14 @@
+<h1 class="avant-garde-header">Select the users you would like to import</h1>
+
+<%= form_tag import_selected_members_path do %>
+  <div class="member-list">
+    <% @slack_members.each do |member| %>
+      <div class="member-list-item">
+        <%= check_box_tag "new_members[]", member.to_json, true %>
+        <%= label "new_members", member['real_name'] %>
+      </div>
+    <% end %>
+
+    <%= submit_tag 'Import', class: 'white-button button--block' %>
+  </div>
+<% end %>

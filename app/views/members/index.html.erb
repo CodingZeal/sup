@@ -8,3 +8,5 @@
     <%= link_to member.email, { action: "edit", id: member }, class: "member-list-item #{status}" %>
   <% end %>
 </div>
+
+<%= button_to 'Import from Slack...', slack_import_members_path, class: 'white-button button--block', method: :get %>

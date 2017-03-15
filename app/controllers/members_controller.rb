@@ -64,7 +64,44 @@ class MembersController < ApplicationController
     @link_data_str = edges.to_json.html_safe
   end
 
+  def slack_import
+    @slack_members = slack_users
+  end
+
+  def import_selected
+    imported_slack_members.map do |member|
+      member.groups.new(name: member.name)
+      member.save
+    end
+
+    redirect_to members_path
+  end
+
   private
+
+  def slack_client
+    @slack_client ||= Slack::Client.new
+  end
+
+  def imported_slack_members
+    @imported_slack_users ||= params[:new_members].map do |user|
+      parsed_user = JSON.parse(user)
+      Member.new(
+        name:     parsed_user['real_name'],
+        email:    parsed_user['profile']['email'],
+        slack_id: parsed_user['id']
+      )
+    end
+  end
+
+  def slack_users
+    @slack_users ||= slack_client.users_list['members'].reject do |u|
+      u['deleted']            ||
+      u['is_bot']             ||
+      u['is_restricted']      ||
+      u['name'] == 'slackbot'
+    end
+  end
 
   def member_params
     params.require(:member).permit!

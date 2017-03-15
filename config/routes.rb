@@ -4,6 +4,8 @@ Sup::Application.routes.draw do
   resources :members do
     collection do
       get 'graph'
+      get 'slack_import'
+      post 'import_selected'
     end
   end
 
