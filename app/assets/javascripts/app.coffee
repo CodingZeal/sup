@@ -32,5 +32,10 @@ init = ->
     else
       # On any other page
 
+
+  $('.slack-list-item').click ->
+    $('.slack-list-item').not($(this)).removeClass('is-open')
+    $(this).toggleClass('is-open')
+
 $ init
 $(document).on 'page:load', init

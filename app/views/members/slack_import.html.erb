@@ -3,9 +3,13 @@
 <%= form_tag import_selected_members_path do %>
   <div class="member-list">
     <% @slack_members.each do |member| %>
-      <div class="member-list-item">
+      <div class="member-list-item slack-list-item">
         <%= check_box_tag "new_members[]", member.to_json, true %>
         <%= label "new_members", member['real_name'] %>
+
+        <div class="member-details">
+          Email: <%= member['profile']['email'] %>
+        </div>
       </div>
     <% end %>
 

@@ -30,6 +30,8 @@
   +clearfix()
   color: black
   font-weight: bold
+  text-transform: capitalize
+  position: relative
   &:last-child
     border-bottom: 2px solid $gray
   &:hover
@@ -40,9 +42,25 @@
     float: right
     width: 12px
     height: 18px
+    position: absolute
+    top: 10px
+    right: 10px
+    transition: all .1s linear
     background-image: $chevron-right
   &.inactive
     color: $gray
+
+.slack-list-item
+  .member-details
+    display: none
+    overflow: hidden
+
+  &.is-open
+    &::after
+      transform: rotateZ(90deg)
+
+    .member-details
+      display: block
 
 #comment-form
   h2
