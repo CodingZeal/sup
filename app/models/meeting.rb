@@ -21,6 +21,7 @@ class Meeting < ActiveRecord::Base
     time_range = (6.days.ago..Time.now)
     Meeting.where(created_at: time_range).each do |meeting|
       MeetingMailer.new_meeting(meeting).deliver
+      SupHelper.create_slack_mpim(meeting)
     end
   end
 

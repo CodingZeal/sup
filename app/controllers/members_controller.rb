@@ -79,10 +79,6 @@ class MembersController < ApplicationController
 
   private
 
-  def slack_client
-    @slack_client ||= Slack.client
-  end
-
   def imported_slack_members
     params[:new_members].map do |user|
       parsed_user = JSON.parse(user)
@@ -94,7 +90,7 @@ class MembersController < ApplicationController
   end
 
   def slack_users
-    @slack_users ||= slack_client.users_list['members'].reject do |u|
+    @slack_users ||= SupHelper.slack_client.users_list['members'].reject do |u|
       u['deleted']            ||
       u['is_bot']             ||
       u['is_restricted']      ||

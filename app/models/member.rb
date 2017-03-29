@@ -1,5 +1,6 @@
 class Member < ActiveRecord::Base
   MAX_GROUPS = 5
+  SUP_BOT_SLACK_ID = 'U4HF2PTNJ'
 
   has_many(
     :group_members,
