@@ -87,8 +87,8 @@ class MembersController < ApplicationController
     params[:new_members].map do |user|
       parsed_user = JSON.parse(user)
       member = Member.find_or_initialize_by(email: parsed_user['profile']['email'])
-      member.name = parsed_user['real_name'] if member.new_record?
-      member.slack_id = parsed_user['id'] unless member.slack_id
+      member.update(name: parsed_user['real_name']) if member.new_record?
+      member.update(slack_id: parsed_user['id']) unless member.slack_id
       member
     end
   end
