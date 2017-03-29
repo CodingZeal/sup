@@ -80,7 +80,7 @@ class MembersController < ApplicationController
   private
 
   def slack_client
-    @slack_client ||= Slack::Client.new
+    @slack_client ||= Slack.client
   end
 
   def imported_slack_members
