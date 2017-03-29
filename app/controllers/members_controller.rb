@@ -70,7 +70,7 @@ class MembersController < ApplicationController
 
   def import_selected
     imported_slack_members.map do |member|
-      member.groups.new(name: member.name)
+      member.groups.new(name: member.name) unless Group.exists?(name: member.name)
       member.save
     end
 
