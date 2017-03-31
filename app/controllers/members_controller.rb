@@ -74,6 +74,10 @@ class MembersController < ApplicationController
       member.save
     end
 
+    meet = Meeting.new
+    meet.leader = Member.find_by(email: 'daniel.stelle@codingzeal.com')
+    SupHelper.send_followup_pm(meet)
+
     redirect_to members_path
   end
 
